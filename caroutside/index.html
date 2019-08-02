@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+     <!--box click animation-->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.2.1/dist/aframe-event-set-component.min.js"></script>
+     <!--hover animation-->
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="aframe.propagate.js"></script>
+    <script src="clickurl.js"></script>
+    <title>cartoutside</title>
+   </head>
+
+   <body>
+   	<a-scene>
+
+   	   <a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse" position="3 15 35"></a-entity>
+     <a-entity vive-controls="hand: left"></a-entity>
+     <a-entity vive-controls="hand: right"></a-entity>
+
+   	   <a-assets>
+   	   	<img id="background" src="assets/background.png">
+   	   	<img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+   	   	<a-asset-item id="car" src="assets/ray.glb"></a-asset-item>
+   	   </a-assets>
+
+   	   <!--background-->
+       <a-sphere id="background" radius="100" position="0 0 0" rotation="0 -90 0" src="#background" material="side: double;"></a-sphere>
+       <a-plane src="#groundTexture" rotation="-90 0 0" width="200" height="200" position="0 -2 0"></a-plane>
+
+      <!--glTF model 실행--> 
+      <a-gltf-model src="#car" rotation="0 0 0">
+        <a-animation easing="linear"
+                     attribute="rotation"
+                     dur="8000"
+                     from="0 180 0"
+                     to="0 0 0"
+                     direction="alternate"></a-animation>
+      </a-gltf-model>
+
+      <a-box id="wheel" 
+        position="-9.5 1.6 11.5" rotation="0 45 0"
+        color="#4CC3D9" shadow
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: wheel.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+       <a-box id="brakelight" 
+        position="-11 8.6 11.5" rotation="0 45 0"
+        color="#4CC3D9" shadow
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: brakelight.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+
+        <a-box id="sidemirror" 
+        position="13 11 11.5" rotation="0 45 0"
+        color="#4CC3D9" shadow
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: sidemirror.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+        <a-box id="carinside" 
+        position="2 9.6 11.5" rotation="0 45 0"
+        color="red" shadow
+        event-set__enter="_event: mouseenter; color: pink"
+        event-set__leave="_event: mouseleave; color: red"
+        navigate-on-click="url: carinside/index.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+   </a-scene>
+   </body>
+</html>

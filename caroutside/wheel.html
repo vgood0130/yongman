@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="aframe.propagate.js"></script>
+    <script src="clickurl.js"></script>
+    <title>Wheel</title>
+   </head>
+
+   <body>
+   	<a-scene>
+
+   	   <a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity>
+     <a-entity vive-controls="hand: left"></a-entity>
+     <a-entity vive-controls="hand: right"></a-entity>
+
+   	   <a-assets>
+   	   	  <img id="background" src="https://cdn.glitch.com/5da0d073-5eaf-4724-9a37-9aeed88ba735%2F3356557402_4bf41d2ca8_b.jpg?1504760654466">
+          <img id="wheel" src="assets/wheel.png">
+          <a-mixin id="fade-in" animation="property: opacity; dir: normal; dur: 1500;
+                   easing: easeOutQuad; loop: false; from:0; to: 1; delay: 1500;"></a-mixin>
+   	   </a-assets>
+
+   	   <!--background-->
+       <a-sky color="#ECECEC"></a-sky>
+       <a-sphere id="background" radius="100" position="0 0 0" rotation="0 0 0" src="#background" color="#333333" material="side: double;"></a-sphere>
+
+
+      <!--go to caroutside : url 바꾸기-->
+      <a-plane propagate="events:clickDown" id="center-tile" class="clickable" position="0 1 -8" width="5" height="7" opacity="0"
+               animation="property: scale; dir: normal; dur: 750; easing: easeOutElastic; loop: false; from: 1 1 1; to: 1.5 1.5 1.5; startEvents: click;"
+               navigate-on-click="url: index.html"> 
+
+      <!--wheel image 소환 : smooth 효과 -->         
+         <a-image
+             id="wheel"
+             class="tile"
+             position="-4.5 0 0"
+             src="#wheel"
+             width="8"
+             height="7.5"
+             opacity="0"
+            animation="property: opacity; dir: normal; dur: 1500;
+                   easing: easeOutQuad; loop: false; from:0; to: 1; delay: 1250;"></a-image>
+    
+      <!-- text와 black plane background-->
+       <a-plane id="text-background" width="10.5" height="7.5" position="6 0 0" color="#000" opacity="0"
+                animation="property: opacity; dir: normal; dur: 1500;
+                           easing: easeOutQuad; loop: false; from:0; to: 0.5; delay: 1500;"></a-plane>
+        <a-text id="text" font="https://cdn.aframe.io/fonts/Aileron-Semibold.fnt" width="18" position="1.2 3 0" opacity="0" value="15-inch luxury alloy wheels" mixin="fade-in"></a-text>
+
+        <a-text id="text" font="https://cdn.aframe.io/fonts/Aileron-Semibold.fnt" width="10" position="1.2 1 0" opacity="0" value="The New Ray, which has returned to its modern, neat new face and spacious space." mixin="fade-in"></a-text>
+
+        <a-text id="go-to-back" font="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt" width="11" position="1.2 -3 0" opacity="0" value="Click Image Go to Back" mixin="fade-in"></a-text>
+
+        </a-plane>
+   </a-scene>
+   </body>
+</html>

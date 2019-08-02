@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+     <!--box click animation-->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.2.1/dist/aframe-event-set-component.min.js"></script>
+     <!--hover animation-->
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="aframe.propagate.js"></script>
+    <script src="clickurl.js"></script>
+    <title>cartinside</title>
+   </head>
+
+   <body>
+   	<a-scene>
+
+   	   <a-entity id="camera" camera
+       look-controls cursor="rayOrigin: mouse"></a-entity>
+
+     <a-entity vive-controls="hand: left"></a-entity>
+     <a-entity vive-controls="hand: right"></a-entity>
+
+   	   <a-assets>
+   	   	<img id="front" src="assets/carinsidefront.png">
+        <img id="back" src="assets/carinsideback.jpg">
+   	   </a-assets>
+
+   	   <!--background-->
+       <a-sphere id="background" radius="100" position="0 0 0" rotation="0 -90 0" src="#front" material="side: double;"></a-sphere>
+
+
+      <a-box id="gear" 
+        position="0 -1.3 -4" rotation="0 45 0"
+        color="#4CC3D9" shadow
+        depth="0.4" height="0.4" width="0.4"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: gear.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+
+      <a-box id="console" 
+        position="2.2 2 -4" rotation="20 45 0"
+        color="#4CC3D9" shadow
+        depth="0.3" height="0.3" width="0.3"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: console.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+       <a-box id="navigation" 
+        position="0 0 -4" rotation="-10 45 0"
+        color="#4CC3D9" shadow
+        depth="0.4" height="0.4" width="0.4"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: navigation.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+
+        <a-box id="handle" 
+        position="-2 -0.6 -4" rotation="10 45 0"
+        depth="0.4" height="0.4" width="0.4"
+        color="#4CC3D9" shadow
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: handle.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+        <a-box id="heatseat" 
+        position="0 -3 4" rotation="0 45 0"
+        color="#4CC3D9" shadow
+        depth="0.5" height="0.5" width="0.5"
+        event-set__enter="_event: mouseenter; color: #026fc9"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        navigate-on-click="url: heatseat.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+        <a-box id="caroutside" 
+        position="-10.5 -3.5 -9" rotation="0 45 0"
+        color="red" shadow
+        event-set__enter="_event: mouseenter; color: pink"
+        event-set__leave="_event: mouseleave; color: red"
+        navigate-on-click="url: https://vgood0130.github.io/Caroutside/index.html"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-box>
+
+
+   </a-scene>
+   </body>
+</html>
